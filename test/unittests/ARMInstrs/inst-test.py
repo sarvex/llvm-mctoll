@@ -10,10 +10,9 @@ from distutils.spawn import find_executable
 
 test_src_harness = 'harness.c'
 test_dir = os.path.dirname(os.path.realpath(__file__))
-test_sources = []
-for file in os.listdir(test_dir):
-    if os.path.splitext(file)[1] == '.s':
-        test_sources.append(file)
+test_sources = [
+    file for file in os.listdir(test_dir) if os.path.splitext(file)[1] == '.s'
+]
 clang_bin='clang'
 llc_bin='llc'
 clang_executable=None
